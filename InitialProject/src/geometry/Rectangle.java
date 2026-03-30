@@ -6,6 +6,15 @@ public class Rectangle {
 	private int height;
 	private boolean selected;
 	
+	// Povrsina pravougaonika P=w*h
+	public int area() {
+		return width * height;
+	}
+	
+	// Obim pravougaonika O=2*(w+h)
+	public int circumference() {
+		return 2* (width + height);
+	}
 	public Point getUpperLeftPoint() {
 		return upperLeftPoint;
 	}
