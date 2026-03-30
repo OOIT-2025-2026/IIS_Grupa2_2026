@@ -5,6 +5,13 @@ public class Point {
 	private int x;
 	private int y;
 	private boolean selected;
+	
+	public double distance(Point point2) {
+		double a = point2.x - x;
+		double b = point2.y - y;
+		double c = Math.sqrt(a*a+b*b);
+		return c;
+	}
 
 	public int getX() {
 		return x;
