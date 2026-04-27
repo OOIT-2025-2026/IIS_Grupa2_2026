@@ -99,7 +99,12 @@ public class Test {
 		
 		System.out.println(p3.equals(p4));
 		System.out.println(p3==p4);
-
+		
+		// Donut
+		Donut donut1 = new Donut(new Point(50,100), 100, 50);
+		System.out.println(donut1.getRadius());
+		Circle donut2 = new Donut(new Point(60,150), 120, 50);
+		System.out.println(((Donut)donut2).getInnerRadius());
 	}
 
 }

@@ -7,6 +7,7 @@ public class Rectangle {
 	private boolean selected;
 
 	public Rectangle() {
+		
 
 	}
 
@@ -47,6 +48,7 @@ public class Rectangle {
 		return false;
 	}
 	
+	// moze se kreirati i metoda contains(Point clickPoint)
 	public boolean contains(int x, int y) {
 		return (x >= this.upperLeftPoint.getX() 
 				&& x <= this.upperLeftPoint.getX() + width
