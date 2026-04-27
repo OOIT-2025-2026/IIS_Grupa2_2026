@@ -39,6 +39,11 @@ public class Circle {
 		return false;
 	}
 	
+	public boolean contains(int x, int y) {
+		Point sadrziTacku = new Point(x, y);
+		return (this.center.distance(sadrziTacku) <= this.radius);
+	}
+	
 	//metode pristupa 
 	public Point getCenter() {
 		return center;

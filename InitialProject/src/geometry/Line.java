@@ -38,6 +38,12 @@ public class Line {
 		}
 		return false;
 	}
+	
+	public boolean contains(int x, int y) {
+		Point sadrziTacku = new Point(x, y);
+		return this.startPoint.distance(sadrziTacku) + 
+				this.endPoint.distance(sadrziTacku) - lenght() <= 2;
+	}
 
 	public Point getStartPoint() {
 		return startPoint;

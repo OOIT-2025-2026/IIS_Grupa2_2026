@@ -40,6 +40,12 @@ public class Point {
 		}
 		return false;
 	}
+	
+	public boolean contains(int x, int y) {
+		if (this.distance(new Point(x, y)) <= 2)
+			return true;
+		return false;
+	}
 
 	public int getX() {
 		return x;
