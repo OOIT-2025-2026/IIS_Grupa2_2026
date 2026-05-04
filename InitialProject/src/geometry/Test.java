@@ -105,6 +105,20 @@ public class Test {
 		System.out.println(donut1.getRadius());
 		Circle donut2 = new Donut(new Point(60,150), 120, 50);
 		System.out.println(((Donut)donut2).getInnerRadius());
+		
+		// Seste vezbe
+		// Shape shape1 = new Shape(); --ne moze
+		Shape shape1 = new Point(50,50);
+		// kompajler gleda levu stranu - klasa Shape ima toString metodu i to je okej
+		// zahvaljujuci new Point(50,50) interpreter u trenutku izvrsavanja zna
+		// koju konkretno implementaciju metode poziva
+		System.out.println(shape1.toString());
+		System.out.println(shape1.isSelected());
+		Shape shape2 = new Point(50,50, true);
+		System.out.println(shape2.isSelected());
+		
+		
+		
 	}
 
 }

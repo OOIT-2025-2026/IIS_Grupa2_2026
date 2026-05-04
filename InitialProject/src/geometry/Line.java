@@ -1,10 +1,11 @@
 package geometry;
 
-public class Line {
+import java.awt.Graphics;
+
+public class Line extends Shape{
 
 	private Point startPoint;
 	private Point endPoint;
-	private boolean selected;
 
 	public Line() {
 
@@ -44,6 +45,13 @@ public class Line {
 		return this.startPoint.distance(sadrziTacku) + 
 				this.endPoint.distance(sadrziTacku) - lenght() <= 2;
 	}
+	
+	
+	@Override
+	public void draw(Graphics g) {
+		g.drawLine(startPoint.getX(), startPoint.getY(),
+				endPoint.getX(), endPoint.getY());
+	}
 
 	public Point getStartPoint() {
 		return startPoint;
@@ -59,14 +67,6 @@ public class Line {
 
 	public void setEndPoint(Point endPoint) {
 		this.endPoint = endPoint;
-	}
-
-	public boolean isSelected() {
-		return selected;
-	}
-
-	public void setSelected(boolean selected) {
-		this.selected = selected;
 	}
 
 }

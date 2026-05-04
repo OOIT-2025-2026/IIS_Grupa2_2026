@@ -1,16 +1,18 @@
 package geometry;
 
-public class Point {
+import java.awt.Graphics;
+
+public class Point extends Shape{
 
 	private int x;
 	private int y;
-	private boolean selected;
 
 	public Point() {
 
 	}
 
 	public Point(int x, int y) {
+		// u pozadini super(); i on setuje selected na false
 		this.x = x;
 		this.y = y;
 	}
@@ -46,6 +48,13 @@ public class Point {
 			return true;
 		return false;
 	}
+	
+	@Override
+	public void draw(Graphics g) {
+		g.drawLine(x-2, y, x+2, y);
+		g.drawLine(x, y-2, x, y+2);
+	}
+
 
 	public int getX() {
 		return x;
@@ -63,12 +72,5 @@ public class Point {
 		this.y = y;
 	}
 
-	public boolean isSelected() {
-		return selected;
-	}
-
-	public void setSelected(boolean selected) {
-		this.selected = selected;
-	}
 
 }
