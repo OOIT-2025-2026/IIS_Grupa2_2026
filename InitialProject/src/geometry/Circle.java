@@ -52,6 +52,29 @@ public class Circle extends Shape{
 		
 	}
 	
+	// u Donut ne moramo override metode vec cemo koristiti iz Circle
+	@Override
+	public void moveTo(int x, int y) {
+		center.moveTo(x, y);
+	}
+
+	@Override
+	public void moveBy(int x, int y) {
+		center.moveBy(x, y);
+	}
+	
+	// moramo override i u Donut zbog poziva metode area
+	@Override
+	public int compareTo(Object o) {
+		if (o instanceof Circle) {
+			double povrsinaThis = this.area();
+			double povrsinaParametar = ((Circle)o).area();
+			return (int)(povrsinaThis-povrsinaParametar);
+		}
+
+		return 0;
+	}
+	
 	//metode pristupa 
 	public Point getCenter() {
 		return center;

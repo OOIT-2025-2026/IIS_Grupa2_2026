@@ -54,7 +54,32 @@ public class Point extends Shape{
 		g.drawLine(x-2, y, x+2, y);
 		g.drawLine(x, y-2, x, y+2);
 	}
+	
+	@Override
+	public void moveTo(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
 
+	@Override
+	public void moveBy(int x, int y) {
+		this.x += x;
+		this.y += y;
+	}
+	
+	@Override
+	public int compareTo(Object o) {
+		if (o instanceof Point) {
+			// udaljenost od koordinatnog pocetka
+			// udaljenost tacke nad kojom se poziva compareTo
+			double udaljenostThisTacke = this.distance(new Point(0,0));
+			// udaljenost tacke koja je parametar
+			double udaljenostParametarTacke = ((Point)o).distance(new Point(0,0));
+			return (int)(udaljenostThisTacke-udaljenostParametarTacke);
+		}
+
+		return 0;
+	}
 
 	public int getX() {
 		return x;
@@ -71,6 +96,10 @@ public class Point extends Shape{
 	public void setY(int y) {
 		this.y = y;
 	}
+
+
+
+
 
 
 }

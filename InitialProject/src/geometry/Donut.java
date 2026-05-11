@@ -55,6 +55,17 @@ public class Donut extends Circle{
 		return area;
 	}
 	
+	@Override
+	public int compareTo(Object o) {
+		if (o instanceof Donut) {
+			double povrsinaThis = this.area();
+			double povrsinaParametar = ((Donut)o).area();
+			return (int)(povrsinaThis-povrsinaParametar);
+		}
+
+		return 0;
+	}
+	
 	// obim sami override
 	
 	@Override
