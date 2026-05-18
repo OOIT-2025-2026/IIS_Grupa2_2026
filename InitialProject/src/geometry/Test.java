@@ -87,7 +87,12 @@ public class Test {
 		 *
 		 */
 		Circle c2 = new Circle();
-		c2.setRadius(10);
+		try {
+			c2.setRadius(-10);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		c2.setCenter(new Point());
 		c2.getCenter().setX((int)(c2.getRadius()+l1.getStartPoint().distance(l1.getEndPoint())));
 	
