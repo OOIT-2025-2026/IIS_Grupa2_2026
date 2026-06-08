@@ -20,6 +20,7 @@ import javax.swing.JScrollPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
 import javax.swing.SwingConstants;
 
 public class FrmZadatak1 extends JFrame {
@@ -186,9 +187,66 @@ public class FrmZadatak1 extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				DlgBoje dlgBoje = new DlgBoje();
 				dlgBoje.setVisible(true);
+				
+				// kad se dijalog zatvori izvrsavanje se vraca na mesto gde je on otvoren
+				// i ovde se vidi da je modalnost bitna
+				if(dlgBoje.isOk) {
+					String red = dlgBoje.textFieldRed.getText();
+					String green = dlgBoje.textFieldGreen.getText();
+					String blue = dlgBoje.textFieldBlue.getText();
+					dlmBoje.addElement(String.join(" ", red, green, blue));
+					Color dodataBoja = new Color(Integer.parseInt(red), 
+							Integer.parseInt(green), Integer.parseInt(blue));
+					pnlCenter.setBackground(dodataBoja);
+				}
+				
 			}
 		});
 		pnlJug.add(btnDodajBoju);
+		
+		JButton btnIzmeniBoju = new JButton("Izmeni boju");
+		btnIzmeniBoju.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int index = list.getSelectedIndex();
+				if (index>-1) {
+					String element = dlmBoje.getElementAt(index);
+					String[] rgb = element.split(" ");
+					DlgBoje dlgIzmeniBoju = new DlgBoje();
+					dlgIzmeniBoju.textFieldRed.setText(rgb[0]);
+					dlgIzmeniBoju.textFieldGreen.setText(rgb[1]);
+					dlgIzmeniBoju.textFieldBlue.setText(rgb[2]);
+					// nakon setovanja text fields-a
+					dlgIzmeniBoju.setVisible(true);
+					if (dlgIzmeniBoju.isOk) {
+						String red = dlgIzmeniBoju.textFieldRed.getText();
+						String green = dlgIzmeniBoju.textFieldGreen.getText();
+						String blue = dlgIzmeniBoju.textFieldBlue.getText();
+						String novaVrednost = String.join(" ", red, green, blue);
+						dlmBoje.setElementAt(novaVrednost, index);
+
+						Color dodataBoja = new Color(Integer.parseInt(red), 
+								Integer.parseInt(green),
+								Integer.parseInt(blue));
+						pnlCenter.setBackground(dodataBoja);
+					} 
+				}
+				
+				
+			}
+		});
+		pnlJug.add(btnIzmeniBoju);
+		
+		JButton btnIzaberiBoju = new JButton("Izaberi boju");
+		btnIzaberiBoju.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Color boja = JColorChooser.showDialog(null, 
+						"Izaberi boju", Color.black);
+				pnlCenter.setBackground(boja);
+				dlmBoje.addElement(boja.toString());
+				
+			}
+		});
+		pnlJug.add(btnIzaberiBoju);
 
 	}
 

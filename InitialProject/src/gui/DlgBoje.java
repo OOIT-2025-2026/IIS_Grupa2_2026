@@ -21,9 +21,10 @@ public class DlgBoje extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textFieldRed;
-	private JTextField textFieldGreen;
-	private JTextField textFieldBlue;
+	protected JTextField textFieldRed;
+	protected JTextField textFieldGreen;
+	protected JTextField textFieldBlue;
+	protected boolean isOk = false; // default je false
 
 	/**
 	 * Launch the application.
@@ -121,8 +122,17 @@ public class DlgBoje extends JDialog {
 						try {
 							// proveravamo unete vrednosti
 							int red = Integer.parseInt(textFieldRed.getText());
-							int green = Integer.parseInt(textFieldRed.getText());
-							int blue = Integer.parseInt(textFieldRed.getText());
+							int green = Integer.parseInt(textFieldGreen.getText());
+							int blue = Integer.parseInt(textFieldBlue.getText());
+							// staviti uslov i za ostale
+							if (red > 0 && red < 256) {
+								isOk = true;
+								setVisible(false);
+							}
+							else
+								JOptionPane.showMessageDialog
+								(null, "Vrednosti moraju biti u opsegu", 
+										"Greska", JOptionPane.ERROR_MESSAGE);
 						} catch (NumberFormatException e1) {
 							JOptionPane.showMessageDialog
 							(null, "Vrednosti moraju biti numericke", 
@@ -137,6 +147,11 @@ public class DlgBoje extends JDialog {
 			}
 			{
 				JButton cancelButton = new JButton("Cancel");
+				cancelButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						setVisible(false);
+					}
+				});
 				cancelButton.setActionCommand("Cancel");
 				buttonPane.add(cancelButton);
 			}
