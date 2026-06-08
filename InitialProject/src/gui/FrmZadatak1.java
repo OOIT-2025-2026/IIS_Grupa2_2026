@@ -180,6 +180,15 @@ public class FrmZadatak1 extends JFrame {
 		});
 		btnKlikniMe.setHorizontalAlignment(SwingConstants.RIGHT);
 		pnlJug.add(btnKlikniMe);
+		
+		JButton btnDodajBoju = new JButton("Dodaj boju");
+		btnDodajBoju.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DlgBoje dlgBoje = new DlgBoje();
+				dlgBoje.setVisible(true);
+			}
+		});
+		pnlJug.add(btnDodajBoju);
 
 	}
 
